@@ -5,7 +5,7 @@ public class Main {
         Main main = new Main();
         String[] strs = {"pôle","pantalon","pentagone"};
         String result = main.longestCommonPrefix(strs);
-        System.out.println("Longest Common Prefix: " + result);
+        System.out.println("Préfixe commun : " + result);
     }
     public String longestCommonPrefix(String[] strs) {
         /*
@@ -40,10 +40,10 @@ public class Main {
          */
         for (int i = minLen; i >= 0; --i)  {
             /*
-            La variable booléenne areAllStringsHasSamePrefix est utilisée pour suivre si toutes les chaînes
+            La variable booléenne samePrefix est utilisée pour suivre si toutes les chaînes
         ont le même préfixe de longueur i. Elle est initialement définie sur true.
              */
-            boolean areAllStringsHasSamePrefix = true;
+            boolean samePrefix = true;
             /*
             La sous-chaîne prefix est extraite de la première chaîne dans le tableau strs.
             Cette sous-chaîne commence à l'index 0 et se termine à l'index i - 1.
@@ -53,21 +53,21 @@ public class Main {
             /*
             -Une autre boucle for pour parcourir toutes les chaînes dans le tableau strs (de j = 0 à j < strs.length)
             -Dans cette boucle, chaque chaîne est vérifiée pour voir si elle commence par le préfixe extrait (prefix). Si ce n'est pas le cas,
-            la variable areAllStringsHasSamePrefix est définie sur false et la boucle interne est interrompue à l'aide de break..
+            la variable samePrefix est définie sur false et la boucle interne est interrompue à l'aide de break..
              */
             for ( int j = 0; j < strs.length; ++j) {
                 if ( !strs[j].startsWith(prefix) ) {
-                    areAllStringsHasSamePrefix = false;
+                    samePrefix = false;
                     break;
                 }
             }
             /*
             -Et lorsque chaque chaîne commence par le préfixe extrait; c'est à dire la variable
-            areAllStringsHasSamePrefix est true , par consequent maxLen est mis à jour par la valeur
+            samePrefix est true , par consequent maxLen est mis à jour par la valeur
             actuelle de i.
             -maxLen contiendra la longueur du préfixe commun le plus long.
              */
-            if ( areAllStringsHasSamePrefix ) {
+            if ( samePrefix ) {
                 maxLen = Math.max(maxLen, i);
             }
         }
